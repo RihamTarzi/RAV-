@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>RAV Coffee Menu</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Kalam", cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #E2DECB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #home {
+            background-image: url(../assest/First.jpg);
+            background-size: cover;
+        }
+
+        ul {
+            text-align: left;
+        }
+
+        .screen {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        /* Header and Logo */
+        header {
+            margin-top: 150px;
+        }
+
+        .ravlogo1 {
+            width: 100%;
+        }
+
+        header p {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #6d4c41;
+            margin-top: 0px;
+        }
+
+        .ravlogo {
+            width: 100%;
+            max-width: 300px;
+            margin-top: -40px;
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6d4c41;
+            margin: 0px 0;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0px 0;
+        }
+
+        .menu-content.flex-container {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .menu-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+            min-width: 45%;
+            border-left: 2px solid #6d4c41;
+            padding-left: 10px;
+        }
+
+        .menu-content li {
+            font-size: 1rem;
+            margin: 8px 0;
+        }
+
+        .menu-content img {
+            max-width: 170px;
+            height: auto;
+            flex: 0 0 150px;
+        }
+
+        /* Buttons */
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .next-btn,
+        .prev-btn {
+            background: #A44818;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 45%;
+        }
+
+        .next-btn:disabled,
+        .prev-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .ravlogo1 {
+                max-width: 300px;
+                margin-top: -50px;
+                margin-bottom: 0;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .menu-content.flex-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-content ul {
+                min-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .menu-content img {
+                margin-top: -130px;
+                margin-left: 150px;
+            }
+
+            .next-btn,
+            .prev-btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Screen 1: Home -->
+    <section id="home" class="screen active">
+        <header>
+            <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo">
+            <p>Bold Flavor, Warm Moments</p>
+        </header>
+        <div class="button-container">
+            <button class="next-btn" onclick="navigate('coffee')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 2: Coffee -->
+    <section id="coffee" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo1">
+        <h2>[coffee]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>espresso</li>
+                <li>latte</li>
+                <li>cappuccino</li>
+                <li>flat white</li>
+                <li>americano</li>
+                <li>cortado</li>
+                <li>piccolo</li>
+                <li>macchiato</li>
+                <li>spanish latte</li>
+                <li>mocha</li>
+                <li>white mocha</li>
+                <li>caramel macchiato</li>
+                <li>cream prulee</li>
+                <li>dulce de leche</li>
+                <li>hot salted caramel</li>
+            </ul>
+            <img src="assest/Coffee.png" alt="Coffee Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('home')">prev</button>
+            <button class="next-btn" onclick="navigate('iced-coffee')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 3: Iced Coffee -->
+    <section id="iced-coffee" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo">
+        <h2>[iced coffee]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>ice latte</li>
+                <li>ice mocha</li>
+                <li>ice americano</li>
+                <li>ice spanish latte</li>
+                <li>ice white mocha</li>
+                <li>ice caramel mecchiato</li>
+                <li>ice salted caramel</li>
+                <li>ice dulce deleche</li>
+                <li>ice cold foam americano</li>
+                <li>ice cream prulee</li>
+                <li>double shot shaken</li>
+            </ul>
+            <img src="assest/Coffee2.png" alt="Iced Coffee Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('coffee')">prev</button>
+            <button class="next-btn" onclick="navigate('matcha')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 4: Matcha -->
+    <section id="matcha" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo1">
+        <h2>[matcha]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>matcha rou</li>
+                <li>matcha white</li>
+                <li>matcha strawberry</li>
+                <li>matcha coconut huny</li>
+            </ul>
+            <img src="assest/Coffee3.png" alt="Matcha Image">
+        </div>
+        <h2>[ice matcha]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>ice matcha rou</li>
+                <li>ice matcha white</li>
+                <li>ice matcha strawberry</li>
+                <li>ice matcha coconut huny</li>
+            </ul>
+            <img src="assest/Coffee4.png" alt="Ice Matcha Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('iced-coffee')">prev</button>
+            <button class="next-btn" onclick="navigate('affogato')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 5: Affogato -->
+    <section id="affogato" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo1">
+        <h2>[affogato]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>turkish coffee</li>
+                <li>hazelnut coffee</li>
+                <li>french coffee</li>
+            </ul>
+            <img src="assest/Coffee5.png" alt="Affogato Image">
+        </div>
+        <h2>[frappe]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>frappe toffee nut</li>
+                <li>frappe caramel</li>
+                <li>frappe original</li>
+                <li>frappe mocha</li>
+                <li>frappe white mocha</li>
+                <li>frappe salted caramel</li>
+                <li>frappe dulce de leche</li>
+                <li>frappe hazelnut</li>
+            </ul>
+            <img src="assest/Coffee6.png" alt="Frappe Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('matcha')">prev</button>
+            <button class="next-btn" onclick="navigate('milkshake')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 6: Milkshake -->
+    <section id="milkshake" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo1">
+        <h2>[milkshake]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>milkshake vanilla</li>
+                <li>milkshake caramel</li>
+                <li>milkshake chocolate</li>
+                <li>milkshake strawberry</li>
+                <li>milkshake blue berry</li>
+                <li>milkshake oreo</li>
+                <li>milkshake coffee</li>
+                <li>milkshake hazelnut coffee</li>
+            </ul>
+            <img src="assest/Coffee7.png" alt="Milkshake Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('affogato')">prev</button>
+            <button class="next-btn" onclick="navigate('hotdrinks')">next</button>
+        </div>
+    </section>
+
+    <!-- Screen 7: Hot Drinks & Ice Tea -->
+    <section id="hotdrinks" class="screen">
+        <img src="assest/Logo1.png" alt="RAV Logo" class="ravlogo1">
+        <h2>[hot drink]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>tea</li>
+                <li>green tea</li>
+                <li>hot chocolate</li>
+                <li>ahmed tea flavors</li>
+            </ul>
+            <img src="assest/Coffee8.png" alt="Hot Drink Image">
+        </div>
+        <h2>[ice tea]</h2>
+        <div class="menu-content flex-container">
+            <ul>
+                <li>ice tea strawberry</li>
+                <li>ice tea blue berry</li>
+                <li>ice tea beach</li>
+                <li>ice tea watermelon</li>
+            </ul>
+            <img src="assest/Coffee9.png" alt="Ice Tea Image">
+        </div>
+        <div class="button-container">
+            <button class="prev-btn" onclick="navigate('milkshake')">prev</button>
+        </div>
+    </section>
+
+    <script>
+        function navigate(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
